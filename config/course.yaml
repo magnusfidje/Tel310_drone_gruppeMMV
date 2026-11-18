@@ -1,0 +1,40 @@
+# Course map for the Tello obstacle course.
+#
+# World frame (metres): origin at the take-off spot,
+#   x = forward along the course, y = left, z = up.
+# Each obstacle has a centre + yaw in the world frame. Each marker has an
+# offset in the obstacle's LOCAL frame:
+#   x = direction you fly through the obstacle, y = left, z = up.
+# So you only need to measure the obstacle centre once, plus the marker
+# positions relative to it (easy with a tape measure).
+
+
+dictionary: DICT_4X4_50
+marker_size: 0.115           # side of the black square (m), same for all markers
+
+obstacles:
+  ring1:
+    diameter: 0.45
+    markers:
+      1:  {role: top,    offset: [0.0,  0.0,    0.225]}
+      10: {role: left,   offset: [0.0,  0.225,  0.0]}
+      12: {role: right,  offset: [0.0, -0.225,  0.0]}
+      0:  {role: bottom, offset: [0.0,  0.0,   -0.225]}
+
+  ladder:
+    # centre = the floor under the ladder, offset z = height above the floor (m)
+    markers:
+      2: {role: top,    offset: [0.0, 0.0, 1.82]}
+      3: {role: middle, offset: [0.0, 0.0, 1.30]}
+      4: {role: bottom, offset: [0.0, 0.0, 0.72]}
+
+
+
+  # Next obstacles - fill in when we get there. Example:
+  # - name: bar_red
+  #   type: bar
+  #   order: 2
+  #   center: [3.0, 0.0, 0.6]
+  #   yaw_deg: 0
+  #   markers:
+  #     - {id: 20, role: center, offset: [0.0, 0.0, 0.0]}
